@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import Link from '@mui/material/Link';
 
 
 function DataTable() {
@@ -16,6 +17,7 @@ function DataTable() {
       fetch("https://api.github.com/search/repositories?q=react&per_page=100")
         .then(res => res.json())
         .then(data => {
+          console.log(data);
             setRepos(data.items)
         })
         .catch(err => {
@@ -44,19 +46,20 @@ function DataTable() {
                 
           <TableHead>
           <TableRow>
-            <TableCell >Name</TableCell>
+            <TableCell >Repositories</TableCell>
             <TableCell align="right">Stars</TableCell>
             <TableCell align="right">Forks</TableCell>
                 </TableRow>
                 </TableHead>
 
                 <TableBody>
-                {/* {repos.map((repo) => ( */}
                 {repos
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((repo, index) => (
                     <TableRow key={repo.id}>
-                    <TableCell component="th" scope="row">{repo.full_name}</TableCell>
+                    <TableCell component="th" scope="row">
+                      <Link href={repo.html_url} underline="none">{repo.full_name}</Link>
+                    </TableCell>
                     <TableCell align="right">{repo.stargazers_count}</TableCell>
                     <TableCell align="right">{repo.forks_count}</TableCell>
                     </TableRow>
