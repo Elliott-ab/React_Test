@@ -1,2 +1,2 @@
 # React_Test
- Elliott AB Scheme Serve React Test - 12.12.2022
+ Elliott AB React Test - 12.12.2022

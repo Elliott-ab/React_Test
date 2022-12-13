@@ -17,7 +17,6 @@ function DataTable() {
       fetch("https://api.github.com/search/repositories?q=react&per_page=100")
         .then(res => res.json())
         .then(data => {
-          console.log(data);
             setRepos(data.items)
         })
         .catch(err => {
@@ -37,8 +36,7 @@ function DataTable() {
       setPage(0);
     };
 
-    const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, repos.length - page * rowsPerPage);
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, repos.length - page * rowsPerPage);
 
     return (  
       <TableContainer component={Paper}>
